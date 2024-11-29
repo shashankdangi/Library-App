@@ -44,7 +44,7 @@ function displayBooks() {
     });
 
     //* Toggle Between Read or not Read
-    const toggleBtn = bookCard.querySelectorAll(".toggleRead");
+    const toggleBtn = bookCard.querySelector(".toggleRead");
     toggleBtn.addEventListener("click", () => {
       myLibrary[index].isRead = !myLibrary[index].isRead;
       displayBooks();
