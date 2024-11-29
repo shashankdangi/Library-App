@@ -159,3 +159,21 @@ body {
 .modal {
   display: none;
 }
+
+@media screen and (max-width: 780px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .booksGrid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bookCard {
+    width: 100%;
+  }
+}
