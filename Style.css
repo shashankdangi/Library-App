@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bokor&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Archivo Black", sans-serif;
+  color: white;
+}
+
+body {
+  background-color: black;
+}
+
+:root {
+  --primary-color: #6d2cc6;
+  --text-color: #ffffff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.74);
+}
+
+.addBook {
+  all: unset;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+.addBook:hover {
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.bookCard {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  border: 2px solid var(--primary-color);
+  width: auto;
+  height: auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.bookCard h3 {
+  font-size: 30px;
+  width: 100%;
+  font-family: "Bokor", cursive;
+  text-align: center;
+  display: block;
+}
+
+.author {
+  font-style: italic;
+  font-weight: lighter;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 4px;
+}
+
+.bookCard button:nth-child(1) {
+  all: unset;
+  cursor: pointer;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.bookCard button:nth-child(1):hover {
+  transform: scale(2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.booksGrid {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.removeBook {
+  all: unset;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: 2px solid var(--primary-color);
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+.removeBook:hover {
+  background-color: var(--primary-color);
+}
+.modalForm span {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.modalForm h3 {
+  text-align: center;
+  font-size: 2rem;
+}
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--primary-color);
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.bookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.bookForm input:not([type="checkbox"]),
+.bookForm textarea {
+  all: unset;
+  border-bottom: 1px solid white;
+}
+
+.bookCard :checked {
+  background-color: white;
+}
+.bookCard input[type="checkbox"] {
+  text-align: center;
+}
+
+.bookForm label.checkBoxLabel {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.submit {
+  all: unset;
+  cursor: pointer;
+  background-color: #311461;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.modal {
+  display: none;
+}

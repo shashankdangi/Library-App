@@ -1,13 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Library App</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div class="container">
+      <header class="header">
+        <h1>Library App</h1>
+        <button class="addBook">Add Book</button>
+      </header>
+      <div class="main">
+        <div class="modal">
+          <div class="modalForm">
+            <span class="closeModal">x</span>
+            <h3>Add Book</h3>
+            <form class="bookForm">
+              <label for="title">Title</label>
+              <input type="text" name="title" id="title" required />
+              <label for="author">Author</label>
+              <input type="text" name="author" id="author" required />
+              <label for="pages">Pages</label>
+              <input type="number" name="pages" id="pages" required />
+              <label for="isRead" class="checkBoxLabel"
+                >Read
+
+                <input type="checkbox" name="isRead" id="isRead" />
+              </label>
+              <button type="submit" class="submit" id="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="booksGrid"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
