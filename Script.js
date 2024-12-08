@@ -1,26 +1,25 @@
 const myLibrary = [];
 
-//* 1. Create a Constructor to Create book object
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-}
-//* 2. Create a function to add book object to myLibrary array
-function addBookToLibrary(title, author, pages, isRead) {
-  const book = new Book(title, author, pages, isRead);
-  myLibrary.push(book);
-}
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
 
-//* 3. Create a function to display book object in myLibrary array
-function displayBooks() {
-  const booksGrid = document.querySelector(".booksGrid");
-  booksGrid.innerHTML = "";
-  myLibrary.forEach(({ title, author, pages, isRead }, index) => {
-    const bookCard = document.createElement("div");
-    bookCard.classList.add("bookCard");
-    bookCard.innerHTML = `
+  static addBookToLibrary(title, author, pages, isRead) {
+    const book = new Book(title, author, pages, isRead);
+    myLibrary.push(book);
+  }
+
+  static displayBook() {
+    const booksGrid = document.querySelector(".booksGrid");
+    booksGrid.innerHTML = "";
+    myLibrary.forEach(({ title, author, pages, isRead }, index) => {
+      const bookCard = document.createElement("div");
+      bookCard.classList.add("bookCard");
+      bookCard.innerHTML = `
         <h3>${title}</h3>
         <p class="author">"${author}"</p>
         <p>Pages : ${pages}</p>
@@ -28,31 +27,30 @@ function displayBooks() {
           isRead ? "👍" : "👎"
         }</button></p>
         `;
-    //* Adding the js to the grid
-    booksGrid.appendChild(bookCard);
+      //* Adding the js to the grid
+      booksGrid.appendChild(bookCard);
+      const removeButton = document.createElement("button");
+      removeButton.classList.add("removeBook");
+      removeButton.textContent = "Remove Book";
 
-    //* 4. Create a function to remove book object from myLibrary array
-    const removeButton = document.createElement("button");
-    removeButton.classList.add("removeBook");
-    removeButton.textContent = "Remove Book";
+      bookCard.appendChild(removeButton);
 
-    bookCard.appendChild(removeButton);
+      removeButton.addEventListener("click", () => {
+        myLibrary.splice(this.index, 1);
+        Book.displayBook();
+      });
 
-    removeButton.addEventListener("click", () => {
-      myLibrary.splice(index, 1);
-      displayBooks();
+      //* Toggle Between Read or not Read
+      const toggleBtn = bookCard.querySelector(".toggleRead");
+      toggleBtn.addEventListener("click", () => {
+        myLibrary[index].isRead = !myLibrary[index].isRead;
+        Book.displayBook();
+      });
     });
-
-    //* Toggle Between Read or not Read
-    const toggleBtn = bookCard.querySelector(".toggleRead");
-    toggleBtn.addEventListener("click", () => {
-      myLibrary[index].isRead = !myLibrary[index].isRead;
-      displayBooks();
-    });
-  });
+  }
 }
 
-//* 5. Create a New Book Button that shows a form to add a new Book
+//. Create a New Book Button that shows a form to add a new Book
 
 const modal = document.querySelector(".modal");
 
@@ -79,8 +77,8 @@ submitBtn.addEventListener("click", (e) => {
   const pages = document.getElementById("pages").value;
   const isRead = document.getElementById("isRead").checked;
 
-  addBookToLibrary(title, author, pages, isRead);
-  displayBooks();
+  Book.addBookToLibrary(title, author, pages, isRead);
+  Book.displayBook();
 
   //! reset the form after submission
   const modalForm = document.querySelector(".bookForm");
